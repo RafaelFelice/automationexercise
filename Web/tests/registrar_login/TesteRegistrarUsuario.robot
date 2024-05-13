@@ -1,7 +1,8 @@
 *** Settings ***
 Documentation         Essa suíte realiza testes de registro de usuário
-Resource              ../../pages/registro_login/homeKW.robot
 Resource              ../../../base.robot
+Resource              ../../pages/registro_login/registroKW.robot
+Resource              ../../pages/home/homeKW.robot
 Task Setup            Inicie o navegador
 Test Teardown         Fechar o navegador
 
@@ -9,9 +10,9 @@ Test Teardown         Fechar o navegador
 *** Test Cases ***
 [T0003] Registrar usuário
     Clique no botão 'Inscreva-se / Login'
-    # Verifique 'Inscrição de novo usuário!' é visível
-    # Digite o nome e endereço de e-mail
-    # Clique no botão 'Inscrever-se'
+    Verifique 'New User Signup!' é visível
+    Digite o nome e endereço de e-mail
+    Clique no botão 'Inscrever-se'
     # Verifique se 'INSERIR INFORMAÇÕES DA CONTA' está visível
     # Preencha os dados: Título, Nome, Email, Senha, Data de nascimento
     # Marque a caixa de seleção 'Inscreva-se em nosso boletim informativo!'

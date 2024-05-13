@@ -2,7 +2,8 @@
 Library            SeleniumLibrary
 
 *** Variables ***
+${MENU_INSCRICAO_LOGIN}        //a[@href='/login']
 
 *** Keywords ***
 Clique no botão 'Inscreva-se / Login'
-    Click Element    //a[@href='/login']
+    Click Element    ${MENU_INSCRICAO_LOGIN}
