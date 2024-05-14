@@ -14,10 +14,10 @@ ${BTN_MR.}                id_gender1
 ${REGISTER_NAME}          name
 ${REGISTER_EMAIL}         email
 ${REGISTER_PASSWORD}      password
-${TXT_Logged}             //a[text()=' Logged in as ']//i[@class='fa fa-user']
+${TXT_LOGGED}             //a[text()=' Logged in as ']//i[@class='fa fa-user']
 ${BTN_DELETE_ACCOUNT}     //i[@class='fa fa-trash-o']
 ${TXT_ACCOUNT_DELETED}    //b[text()='Account Deleted!']
-
+${BTN_LOGOUT}             //i[@class='fa fa-lock']
 
 
 
@@ -69,3 +69,6 @@ Verifique se '${FRASE}' é visível
 
 Verifique o erro '${FRASE}' é visível
     Wait Until Page Contains    text=${FRASE}
+
+Clique no botão ‘Sair’
+    Click Element    locator=${BTN_LOGOUT}
