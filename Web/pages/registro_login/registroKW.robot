@@ -15,7 +15,6 @@ ${REGISTER_NAME}          name
 ${REGISTER_EMAIL}         email
 ${REGISTER_PASSWORD}      password
 ${TXT_Logged}             //a[text()=' Logged in as ']//i[@class='fa fa-user']
-# //i[@class='fa fa-user']
 ${BTN_DELETE_ACCOUNT}     //i[@class='fa fa-trash-o']
 ${TXT_ACCOUNT_DELETED}    //b[text()='Account Deleted!']
 
@@ -38,6 +37,13 @@ Digite endereço de email e senha
     Input Text                  ${INPUT_EMAIL_LOGIN}       teste04@qa.com
     Input Text                  ${INPUT_PASSWORD_LOGIN}    teste
 
+Digite endereço de email e senha incorretos
+    ${EMAILFAKE}                FakerLibrary.Email
+    ${PASSWORDFAKE}             FakerLibrary.Password        
+    
+    Input Text                  ${INPUT_EMAIL_LOGIN}        ${EMAILFAKE}
+    Input Text                  ${INPUT_PASSWORD_LOGIN}     ${PASSWORDFAKE}   
+    
 Clique no botão 'Inscrever-se'
     Click Button                locator=${BTN_SIGNUP}
 
@@ -59,5 +65,7 @@ Clique no botão ‘Excluir conta’
     Click Element    locator=${BTN_DELETE_ACCOUNT}
 
 Verifique se '${FRASE}' é visível
-        Wait Until Page Contains    text=${FRASE}
-    
+    Wait Until Page Contains    text=${FRASE}
+
+Verifique o erro '${FRASE}' é visível
+    Wait Until Page Contains    text=${FRASE}
