@@ -32,9 +32,16 @@ Digite o nome e endereço de e-mail
     Set Global Variable                      ${NAMEFAKE} 
     Set Global Variable                      ${LASTNAMEFAKER}
     Set Global Variable                      ${EMAILFAKE}
+    Set Global Variable                      ${PASSWORDFAKE}
     Set Global Variable                      ${COMPANYFAKER}
     Set Global Variable                      ${ADDRESS1FAKER}
     Set Global Variable                      ${ADDRESS2FAKER}
     Set Global Variable                      ${ZIPCODEFAKER}
     Set Global Variable                      ${MOBILENUMBERFAKER}
 
+Clique no botão
+    [Arguments]    ${locator}
+    Click Element    ${locator}
+
+Verifique se ‘${FRASE}’ está visível
+    Wait Until Page Contains    text=${FRASE}
