@@ -98,6 +98,10 @@ Verifique o erro '${FRASE}' é visível
     Wait Until Page Contains    text=${FRASE}
 
 
+Clique no botão ‘Sair’
+    Click Element    locator=${BTN_LOGOUT}
+
+
 Digite o nome e endereço de e-mail    
     ${NOMEFAKE}                 FakerLibrary.First Name
     ${EMAILFAKE}                Set Variable          ${NOMEFAKE}@test.com
@@ -115,3 +119,4 @@ Digite endereço de email e senha incorretos
     
     Input Text                  ${INPUT_EMAIL_LOGIN}        ${EMAILFAKE}
     Input Text                  ${INPUT_PASSWORD_LOGIN}     ${PASSWORDFAKE}   
+
