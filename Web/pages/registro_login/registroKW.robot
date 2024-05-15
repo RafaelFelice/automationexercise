@@ -14,6 +14,9 @@ Verifique '${FRASE}' é visível
 Clique no botão 'Inscrever-se'
     Click Button                locator=${BTN_SIGNUP}
 
+Clique no botão 'Login'
+    Click Button                locator=${BTN_LOGIN}
+
 Verifique se '${FRASE}' está visível
     Wait Until Page Contains    text=${FRASE}
 
@@ -22,7 +25,7 @@ Preencha os dados: Título, Nome, Email, Senha, Data de nascimento
     Should Not Be Empty        item=${REGISTER_NAME}
     Should Not Be Empty        item=${REGISTER_EMAIL}
     Input Text                 locator=${REGISTER_PASSWORD}    text=123456
-
+    
     ${dates}=    Get List Items    id=days   
     ${random_index}=    Evaluate    random.randint(0, len($dates)-1)    random
     Select From List By Index        id=days    ${random_index}
@@ -71,5 +74,23 @@ Clique no botão ‘Continuar’
 Verifique se ‘ ${FRASE} ${NAMEFAKE}’ está visível
     Wait Until Page Contains    text=${FRASE} ${NAMEFAKE}
 
+Digite o nome e endereço de e-mail    
+    ${NOMEFAKE}                 FakerLibrary.First Name
+    ${EMAILFAKE}                Set Variable          ${NOMEFAKE}@test.com
+    
+    Input Text                  ${INPUT_NAME}         ${NOMEFAKE}   
+    Input Text                  ${INPUT_EMAIL}        ${EMAILFAKE}
 
+Digite endereço de email e senha
+    Input Text                  ${INPUT_EMAIL_LOGIN}       teste04@qa.com
+    Input Text                  ${INPUT_PASSWORD_LOGIN}    teste
+    
+Verifique se ‘${FRASE}’ está visível
+    Wait Until Page Contains    text=${FRASE}
+    
+Clique no botão ‘Excluir conta’
+    Click Element    locator=${BTN_DELETE_ACCOUNT}
+
+Verifique se '${FRASE}' é visível
+        Wait Until Page Contains    text=${FRASE}
     
