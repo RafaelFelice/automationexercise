@@ -92,5 +92,26 @@ Clique no botão ‘Excluir conta’
     Click Element    locator=${BTN_DELETE_ACCOUNT}
 
 Verifique se '${FRASE}' é visível
-        Wait Until Page Contains    text=${FRASE}
+    Wait Until Page Contains    text=${FRASE}
+
+Verifique o erro '${FRASE}' é visível
+    Wait Until Page Contains    text=${FRASE}
+
+
+Digite o nome e endereço de e-mail    
+    ${NOMEFAKE}                 FakerLibrary.First Name
+    ${EMAILFAKE}                Set Variable          ${NOMEFAKE}@test.com
     
+    Input Text                  ${INPUT_NAME}         ${NOMEFAKE}   
+    Input Text                  ${INPUT_EMAIL}        ${EMAILFAKE}
+
+Digite endereço de email e senha
+    Input Text                  ${INPUT_EMAIL_LOGIN}       teste04@qa.com
+    Input Text                  ${INPUT_PASSWORD_LOGIN}    teste
+
+Digite endereço de email e senha incorretos
+    ${EMAILFAKE}                FakerLibrary.Email
+    ${PASSWORDFAKE}             FakerLibrary.Password        
+    
+    Input Text                  ${INPUT_EMAIL_LOGIN}        ${EMAILFAKE}
+    Input Text                  ${INPUT_PASSWORD_LOGIN}     ${PASSWORDFAKE}   
