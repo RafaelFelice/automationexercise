@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation         Essa suíte realiza testes de registro de usuário
+Documentation         Essa suíte realiza testes de sair da conta
 Resource              ../../../base.robot
 Resource              ../../pages/registro_login/registroKW.robot
 Resource              ../../pages/home/homeKW.robot
@@ -11,7 +11,7 @@ Default Tags          @regressivo
 *** Test Cases ***
 [T0006] - Logout usuário
     Clique no botão    ${MENU_INSCRICAO_LOGIN}
-    Verifique se ‘Login to your account'’ está visível
+    Verifique se ‘Login to your account’ está visível
     Digite endereço de email e senha
     Clique no botão    ${BTN_LOGIN}
     Verifique se ‘Logged in as’ está visível

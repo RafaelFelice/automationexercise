@@ -3,7 +3,7 @@ Documentation         Essa suíte realiza testes de registro de usuário
 Resource              ../../../base.robot
 Resource              ../../pages/registro_login/registroKW.robot
 Resource              ../../pages/home/homeKW.robot
-Task Setup            Inicie o navegador
+Test Setup            Inicie o navegador
 Test Teardown         Fechar o navegador
 Default Tags          @regressivo
 
