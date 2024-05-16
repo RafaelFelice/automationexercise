@@ -8,18 +8,6 @@ Resource           ../../../base.robot
 
 
 *** Keywords ***
-Verifique '${FRASE}' é visível
-    Wait Until Page Contains    text=${FRASE}
-    
-Clique no botão 'Inscrever-se'
-    Click Button                locator=${BTN_SIGNUP}
-
-Clique no botão 'Login'
-    Click Button                locator=${BTN_LOGIN}
-
-Verifique se '${FRASE}' está visível
-    Wait Until Page Contains    text=${FRASE}
-
 Preencha os dados: Título, Nome, Email, Senha, Data de nascimento
     Click Element              locator=${RADIO_MR.}
     Should Not Be Empty        item=${REGISTER_NAME}
@@ -41,11 +29,10 @@ Preencha os dados: Título, Nome, Email, Senha, Data de nascimento
     Select From List By Index        id=years    ${random_index}
     ${selected_date}=    Set Variable    ${years}[${random_index}]
 
-Marque a caixa de seleção 'Inscreva-se em nosso boletim informativo!'
-    Click Element    locator=${CHECKBOX_NEWSLETTER}
-
-Marque a caixa de seleção 'Receber ofertas especiais de nossos parceiros!'
-    Click Element    locator=${CHECKBOX_OFFERS}
+Marque a caixa de seleção
+    [Arguments]    ${FRASE}    ${locator}
+    Wait Until Page Contains    text=${FRASE}
+    Click Element    ${locator}
 
 Preencha os dados: Nome, Sobrenome, Empresa, Endereço, Endereço2, País, Estado, Cidade, CEP, Número de celular
     Input Text    locator=${INPUT_FIRSTNAME}    text=${NAMEFAKE}
@@ -61,54 +48,7 @@ Preencha os dados: Nome, Sobrenome, Empresa, Endereço, Endereço2, País, Estad
 
     Input Text    locator=${INPUT_ZIPCODE}      text=${ZIPCODEFAKER}
     Input Text    locator=${MOBILE_NUMBER}      text=${MOBILENUMBERFAKER}
-
-Clique no botão 'Criar conta'
-    Click Button    locator=${BTN_CREATE_ACCOUNT}
-
-Verifique se '${FRASE}' é visível
-    Wait Until Page Contains    text=${FRASE}
-
-Clique no botão ‘Continuar’
-    Click Element    locator=${BTN_CONTINUE}
-
-Verifique se ‘ ${FRASE} ${NAMEFAKE}’ está visível
-    Wait Until Page Contains    text=${FRASE} ${NAMEFAKE}
-
-Digite o nome e endereço de e-mail    
-    ${NOMEFAKE}                 FakerLibrary.First Name
-    ${EMAILFAKE}                Set Variable          ${NOMEFAKE}@test.com
-    
-    Input Text                  ${INPUT_NAME}         ${NOMEFAKE}   
-    Input Text                  ${INPUT_EMAIL}        ${EMAILFAKE}
-
-Digite endereço de email e senha
-    Input Text                  ${INPUT_EMAIL_LOGIN}       teste04@qa.com
-    Input Text                  ${INPUT_PASSWORD_LOGIN}    teste
-    
-Verifique se ‘${FRASE}’ está visível
-    Wait Until Page Contains    text=${FRASE}
-    
-Clique no botão ‘Excluir conta’
-    Click Element    locator=${BTN_DELETE_ACCOUNT}
-
-Verifique se '${FRASE}' é visível
-    Wait Until Page Contains    text=${FRASE}
-
-Verifique o erro '${FRASE}' é visível
-    Wait Until Page Contains    text=${FRASE}
-
-
-Clique no botão ‘Sair’
-    Click Element    locator=${BTN_LOGOUT}
-
-
-Digite o nome e endereço de e-mail    
-    ${NOMEFAKE}                 FakerLibrary.First Name
-    ${EMAILFAKE}                Set Variable          ${NOMEFAKE}@test.com
-    
-    Input Text                  ${INPUT_NAME}         ${NOMEFAKE}   
-    Input Text                  ${INPUT_EMAIL}        ${EMAILFAKE}
-
+     
 Digite endereço de email e senha
     Input Text                  ${INPUT_EMAIL_LOGIN}       teste04@qa.com
     Input Text                  ${INPUT_PASSWORD_LOGIN}    teste
@@ -119,4 +59,3 @@ Digite endereço de email e senha incorretos
     
     Input Text                  ${INPUT_EMAIL_LOGIN}        ${EMAILFAKE}
     Input Text                  ${INPUT_PASSWORD_LOGIN}     ${PASSWORDFAKE}   
-
