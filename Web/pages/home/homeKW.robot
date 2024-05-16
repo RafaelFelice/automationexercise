@@ -1,8 +1,6 @@
 *** Settings ***
 Library            SeleniumLibrary
-
-*** Variables ***
-${MENU_INSCRICAO_LOGIN}        //a[@href='/login']
+Resource           ../home/homeVariaveis.robot
 
 *** Keywords ***
 Clique no botão 'Inscreva-se / Login'

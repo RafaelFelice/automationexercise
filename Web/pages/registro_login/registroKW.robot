@@ -1,18 +1,21 @@
 *** Settings ***
 Library            SeleniumLibrary
-Library            FakerLibrary
 Library            String
 Library            Collections
+Library            FakerLibrary
 Resource           ../registro_login/registroVariaveis.robot
 Resource           ../../../base.robot
 
 
 *** Keywords ***
 Preencha os dados: Título, Nome, Email, Senha, Data de nascimento
+    ${PASSWORDFAKER}           FakerLibrary.Password
     Click Element              locator=${RADIO_MR.}
     Should Not Be Empty        item=${REGISTER_NAME}
     Should Not Be Empty        item=${REGISTER_EMAIL}
-    Input Text                 locator=${REGISTER_PASSWORD}    text=123456
+    Input Text                 locator=${REGISTER_PASSWORD}    text=${PASSWORDFAKER}
+
+    Set Global Variable        ${PASSWORDFAKER}
     
     ${dates}=    Get List Items    id=days   
     ${random_index}=    Evaluate    random.randint(0, len($dates)-1)    random
@@ -50,12 +53,12 @@ Preencha os dados: Nome, Sobrenome, Empresa, Endereço, Endereço2, País, Estad
     Input Text    locator=${MOBILE_NUMBER}      text=${MOBILENUMBERFAKER}
      
 Digite endereço de email e senha
-    Input Text                  ${INPUT_EMAIL_LOGIN}       teste04@qa.com
-    Input Text                  ${INPUT_PASSWORD_LOGIN}    teste
+    Input Text                  locator=${INPUT_EMAIL_LOGIN}       text=${EMAILFAKE}
+    Input Text                  locator=${INPUT_PASSWORD_LOGIN}    text=${PASSWORDFAKER}
 
 Digite endereço de email e senha incorretos
     ${EMAILFAKE}                FakerLibrary.Email
     ${PASSWORDFAKE}             FakerLibrary.Password        
     
-    Input Text                  ${INPUT_EMAIL_LOGIN}        ${EMAILFAKE}
-    Input Text                  ${INPUT_PASSWORD_LOGIN}     ${PASSWORDFAKE}   
+    Input Text                  locator=${INPUT_EMAIL_LOGIN}        text=${EMAILFAKE}
+    Input Text                  locator=${INPUT_PASSWORD_LOGIN}     text=${PASSWORDFAKE}   
