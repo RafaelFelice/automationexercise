@@ -17,4 +17,3 @@ Default Tags          @regressivo
     Clique no botão OK
     Verifique se ‘Success! Your details have been submitted successfully.’ está visível
     Clique no botão    ${MENU_HOME}
-    # verifique se foi direcionado para a página inicial com sucesso
