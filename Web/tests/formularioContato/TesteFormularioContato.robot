@@ -14,6 +14,6 @@ Default Tags          @regressivo
     Verifique se ‘Get In Touch’ está visível
     Digite nome, email, assunto e mensagem
     Clique no botão    ${BTN_ENVIAR}
-    Clique no botão OK
+    Interagir com Alert
     Verifique se ‘Success! Your details have been submitted successfully.’ está visível
     Clique no botão    ${MENU_HOME}
