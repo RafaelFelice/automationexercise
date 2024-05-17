@@ -8,6 +8,7 @@ Resource           ../../../base.robot
 
 
 *** Keywords ***
+
 Preencha os dados: Título, Nome, Email, Senha, Data de nascimento
     ${PASSWORDFAKER}           FakerLibrary.Password
     Click Element              locator=${RADIO_MR.}
