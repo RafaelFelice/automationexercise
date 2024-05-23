@@ -25,3 +25,4 @@ ${INPUT_EMAIL_LOGIN}      //form[@action='/login']//input[@name='email']
 ${INPUT_PASSWORD_LOGIN}    //form[@action='/login']//input[@name='password']
 ${BTN_DELETE_ACCOUNT}     //i[@class='fa fa-trash-o']
 ${BTN_LOGOUT}             //*[text()=' Logout']
+${BTN_FECHAR_POPUP}       ismiss-button

@@ -19,20 +19,24 @@ Inicie o navegador
     ${NAMEFAKE}                             FakerLibrary.First Name
     ${LASTNAMEFAKER}                        FakerLibrary.Last Name
     ${EMAILFAKE}                            Set Variable          ${NAMEFAKE}@test.com
+    ${PASSWORDFAKER}                        Generate Password
     ${COMPANYFAKER}                         FakerLibrary.Company
     ${ADDRESS1FAKER}                        FakerLibrary.Address
     ${ADDRESS2FAKER}                        FakerLibrary.Address
     ${ZIPCODEFAKER}                         FakerLibrary.Zipcode
     ${MOBILENUMBERFAKER}                    FakerLibrary.Phone Number
 
+
     Set Global Variable                     ${NAMEFAKE} 
     Set Global Variable                     ${LASTNAMEFAKER}
     Set Global Variable                     ${EMAILFAKE}
+    Set Global Variable                     ${PASSWORDFAKER}
     Set Global Variable                     ${COMPANYFAKER}
     Set Global Variable                     ${ADDRESS1FAKER}
     Set Global Variable                     ${ADDRESS2FAKER}
     Set Global Variable                     ${ZIPCODEFAKER}
     Set Global Variable                     ${MOBILENUMBERFAKER}
+    Set Global Variable                     ${TEMP_DIR}
 
 Fechar o navegador
     Close Browser
