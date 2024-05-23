@@ -66,3 +66,16 @@ Verifique se ‘${FRASE}’ está visível
 
 Interagir com Alert
     Handle Alert
+
+O objeto está visível
+    [Arguments]                      ${locator}
+    Element Should Be Visible        ${locator}
+
+Capturar Texto
+    [Arguments]    ${locator}
+    ${nome_produto}=    Get Text    ${locator}
+    [Return]    ${nome_produto}
+    Set Global Variable    ${nome_produto}
+
+Verificar título da página "${TÍTULO}"
+    Title Should Be    title=${TÍTULO}
