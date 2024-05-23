@@ -3,6 +3,7 @@ Library            SeleniumLibrary
 Library            String
 Library            Collections
 Library            FakerLibrary
+Library            OperatingSystem
 Resource           ../registro_login/registroVariaveis.robot
 Resource           ../../../base.robot
 
@@ -12,14 +13,19 @@ Resource           ../../../base.robot
 Digite o nome e endereço de e-mail
     Input Text                  locator=${INPUT_NAME}         text=${NAMEFAKE}
     Input Text                  locator=${INPUT_EMAIL}        text=${EMAILFAKE}
+
+    Log    Email: ${EMAILFAKE}
+    Log    Password: ${PASSWORDFAKER}
+
+    Salvar Credenciais em Arquivo    ${EMAILFAKE}    ${PASSWORDFAKER}
+
 Preencha os dados: Título, Nome, Email, Senha, Data de nascimento
     ${PASSWORDFAKER}           FakerLibrary.Password
     Click Element              locator=${RADIO_MR.}
     Should Not Be Empty        item=${REGISTER_NAME}
     Should Not Be Empty        item=${REGISTER_EMAIL}
     Input Text                 locator=${REGISTER_PASSWORD}    text=${PASSWORDFAKER}
-
-    Set Global Variable        ${PASSWORDFAKER}
+    
     
     ${dates}=    Get List Items    id=days   
     ${random_index}=    Evaluate    random.randint(0, len($dates)-1)    random
@@ -57,12 +63,37 @@ Preencha os dados: Nome, Sobrenome, Empresa, Endereço, Endereço2, País, Estad
     Input Text    locator=${MOBILE_NUMBER}      text=${MOBILENUMBERFAKER}
      
 Digite endereço de email e senha
-    Input Text                  locator=${INPUT_EMAIL_LOGIN}       text=${EMAILFAKE}
-    Input Text                  locator=${INPUT_PASSWORD_LOGIN}    text=${PASSWORDFAKER}
+    ${email}    ${password} =    Ler Credenciais do Arquivo
+    Input Text                  locator=${INPUT_EMAIL_LOGIN}       text=${email}
+    Input Text                  locator=${INPUT_PASSWORD_LOGIN}    text=${password}
+    Log    Email: ${email}
+    Log    Password: ${password}
 
 Digite endereço de email e senha incorretos
     ${EMAILFAKE}                FakerLibrary.Email
     ${PASSWORDFAKE}             FakerLibrary.Password        
     
     Input Text                  locator=${INPUT_EMAIL_LOGIN}        text=${EMAILFAKE}
-    Input Text                  locator=${INPUT_PASSWORD_LOGIN}     text=${PASSWORDFAKE}   
+    Input Text                  locator=${INPUT_PASSWORD_LOGIN}     text=${PASSWORDFAKE}
+
+Generate Password
+    [Arguments]    ${length}=10
+    ${password}=    FakerLibrary.Password    ${length}    False    False    False    True
+    [Return]    ${password}
+
+Salvar Credenciais em Arquivo
+    [Arguments]    ${email}    ${password}
+    ${file_path} =    Set Variable    ${TEMP_DIR}/email_senha.txt
+    Log    Creating file at: ${file_path}
+    Create File    ${file_path}    ${email}:${password}
+    Log    File created with content: ${email}:${password}
+
+Ler Credenciais do Arquivo
+    [Arguments]    ${file_path}=${TEMP_DIR}/email_senha.txt
+    Log    Reading file at: ${file_path}
+    ${credentials} =    Get File    ${file_path}
+    Log    File content: ${credentials}
+    ${email}    ${password} =    Split String    ${credentials}    :
+    Log    Read email: ${email}
+    Log    Read password: ${password}
+    [Return]    ${email}    ${password}

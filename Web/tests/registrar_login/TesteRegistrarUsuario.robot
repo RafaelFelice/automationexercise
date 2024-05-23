@@ -5,11 +5,12 @@ Resource              ../../pages/registro_login/registroKW.robot
 Resource              ../../pages/home/homeKW.robot
 Test Setup            Inicie o navegador
 Test Teardown         Fechar o navegador
-Default Tags          @regressivo
+# Default Tags          @regressivo
 
 
 *** Test Cases ***
 [T0003] Registrar usuário
+    [Tags]    Regressivo
     Clique no botão    ${MENU_INSCRICAO_LOGIN}
     Verifique se ‘New User Signup!’ está visível
     Digite o nome e endereço de e-mail
@@ -22,4 +23,7 @@ Default Tags          @regressivo
     Clique no botão    ${BTN_CREATE_ACCOUNT}
     Verifique se ‘Account Created!’ está visível
     Clique no botão    ${BTN_CONTINUE}
-    Verifique se ‘ Logged in as’ está visível
+    Verifique se ‘Logged in as’ está visível
+    Clique no botão    ${BTN_LOGOUT}
+    Verifique se ‘Login to your account’ está visível
+    Capture Page Screenshot
