@@ -15,9 +15,10 @@ Digite o nome e endereço de e-mail
     Input Text                  locator=${INPUT_EMAIL}        text=${EMAILFAKE}
 
     Log    Email: ${EMAILFAKE}
-    Log    Password: ${PASSWORDFAKER}
+    
+    # Log    Password: ${PASSWORDFAKER}
 
-    Salvar Credenciais em Arquivo    ${EMAILFAKE}    ${PASSWORDFAKER}
+    # Salvar Credenciais em Arquivo    ${EMAILFAKE}    ${PASSWORDFAKER}
 
 Preencha os dados: Título, Nome, Email, Senha, Data de nascimento
     ${PASSWORDFAKER}           FakerLibrary.Password
@@ -25,7 +26,9 @@ Preencha os dados: Título, Nome, Email, Senha, Data de nascimento
     Should Not Be Empty        item=${REGISTER_NAME}
     Should Not Be Empty        item=${REGISTER_EMAIL}
     Input Text                 locator=${REGISTER_PASSWORD}    text=${PASSWORDFAKER}
-    
+
+    Log    Password: ${PASSWORDFAKER}
+    Salvar Credenciais em Arquivo    ${EMAILFAKE}    ${PASSWORDFAKER}
     
     ${dates}=    Get List Items    id=days   
     ${random_index}=    Evaluate    random.randint(0, len($dates)-1)    random
@@ -79,7 +82,7 @@ Digite endereço de email e senha incorretos
 Generate Password
     [Arguments]    ${length}=10
     ${password}=    FakerLibrary.Password    ${length}    False    False    False    True
-    [Return]    ${password}
+    RETURN    ${password}
 
 Salvar Credenciais em Arquivo
     [Arguments]    ${email}    ${password}
@@ -96,4 +99,4 @@ Ler Credenciais do Arquivo
     ${email}    ${password} =    Split String    ${credentials}    :
     Log    Read email: ${email}
     Log    Read password: ${password}
-    [Return]    ${email}    ${password}
+    RETURN    ${email}    ${password}
