@@ -73,9 +73,12 @@ O objeto está visível
 
 Capturar Texto
     [Arguments]    ${locator}
-    ${nome_produto}=    Get Text    ${locator}
-    [Return]    ${nome_produto}
-    Set Global Variable    ${nome_produto}
+    ${texto}=    Get Text    ${locator}
+    Set Global Variable    ${texto}
 
 Verificar título da página "${TÍTULO}"
     Title Should Be    title=${TÍTULO}
+
+Inserir texto
+    [Arguments]    ${locator}    ${text}
+    Input Text    locator=${locator}    text=${text}
