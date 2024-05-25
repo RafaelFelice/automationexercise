@@ -1,3 +1,4 @@
+
 *** Settings ***
 Documentation         Essa suíte realiza testes de registro de usuário
 Resource              ../../../base.robot
