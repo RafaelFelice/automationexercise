@@ -18,3 +18,4 @@ Test Teardown         Fechar o navegador
     Verifique se ‘Logged in as’ está visível
     Clique no botão    ${BTN_DELETE_ACCOUNT}
     Verifique se ‘Account Deleted!’ está visível
+    
