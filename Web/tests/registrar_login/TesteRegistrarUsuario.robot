@@ -4,7 +4,9 @@ Documentation         Essa suíte realiza testes de registro de usuário
 Resource              ../../../base.robot
 Resource              ../../pages/registro_login/registroKW.robot
 Resource              ../../pages/home/homeKW.robot
-Test Setup            Inicie o navegador
+Test Setup            Run Keywords
+...                   Inicie o navegador
+...                   User faker
 Test Teardown         Fechar o navegador
 # Default Tags          @regressivo
 

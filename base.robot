@@ -15,7 +15,8 @@ Inicie o navegador
     Maximize Browser Window
     Go To                                   ${URL_DEV}
     Wait Until Element Is Visible           ${IMAGE_AUTOMATIONEXERCISE}
-    
+
+User faker    
     ${NAMEFAKE}                             FakerLibrary.First Name
     ${LASTNAMEFAKER}                        FakerLibrary.Last Name
     ${EMAILFAKE}                            Set Variable          ${NAMEFAKE}@test.com
@@ -82,3 +83,7 @@ Verificar título da página "${TÍTULO}"
 Inserir texto
     [Arguments]    ${locator}    ${text}
     Input Text    locator=${locator}    text=${text}
+
+Rolar scroll até elemento ficar visível
+    [Arguments]                 ${locator}
+    Scroll Element Into View    ${locator}
