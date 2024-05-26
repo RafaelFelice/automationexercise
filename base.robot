@@ -42,22 +42,6 @@ User faker
 Fechar o navegador
     Close Browser
 
-Registrar usuário
-    Clique no botão    ${MENU_INSCRICAO_LOGIN}
-    Verifique se ‘New User Signup!’ está visível
-    Digite o nome e endereço de e-mail
-    Clique no botão    ${BTN_SIGNUP}
-    Verifique se ‘Enter Account Information’ está visível
-    Preencha os dados: Título, Nome, Email, Senha, Data de nascimento
-    Marque a caixa de seleção    Sign up for our newsletter!    ${CHECKBOX_NEWSLETTER}
-    Marque a caixa de seleção    Receive special offers from our partners!    ${CHECKBOX_OFFERS}
-    Preencha os dados: Nome, Sobrenome, Empresa, Endereço, Endereço2, País, Estado, Cidade, CEP, Número de celular
-    Clique no botão    ${BTN_CREATE_ACCOUNT}
-    Verifique se ‘Account Created!’ está visível
-    Clique no botão    ${BTN_CONTINUE}
-    Wait Until Element Is Visible    locator=${BTN_LOGOUT}
-    Clique no botão    ${BTN_LOGOUT}
-
 Clique no botão
     [Arguments]      ${locator}
     Click Element    ${locator}

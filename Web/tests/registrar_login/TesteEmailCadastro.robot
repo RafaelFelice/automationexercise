@@ -11,11 +11,11 @@ Test Teardown         Fechar o navegador
 
 
 *** Test Cases ***
-[T0004] - Usuário de login com e-mail e senha corretos
+[T0007] - Registrar usuário com e-mail existente
     [Tags]     Regressivo    
     Clique no botão    ${MENU_INSCRICAO_LOGIN}
     Verifique se ‘Login to your account’ está visível
-    Digite endereço de email e senha
-    Clique no botão    ${BTN_LOGIN}
-    Verifique se ‘Logged in as’ está visível
-    
+    Inserir texto    ${INPUT_NAME}    ${nome_cadastrado}
+    Inserir texto    ${INPUT_EMAIL}    ${email_cadastro}
+    Clique no botão    ${BTN_SIGNUP}
+    Verifique se ‘Email Address already exist!’ está visível

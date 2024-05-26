@@ -16,7 +16,8 @@ Test Teardown         Fechar o navegador
     [Tags]    Regressivo
     Clique no botão    ${MENU_INSCRICAO_LOGIN}
     Verifique se ‘New User Signup!’ está visível
-    Digite o nome e endereço de e-mail
+    Inserir texto    ${INPUT_NAME}    ${NAMEFAKE}
+    Inserir texto    ${INPUT_EMAIL}    ${EMAILFAKE}
     Clique no botão    ${BTN_SIGNUP}
     Verifique se ‘Enter Account Information’ está visível
     Preencha os dados: Título, Nome, Email, Senha, Data de nascimento

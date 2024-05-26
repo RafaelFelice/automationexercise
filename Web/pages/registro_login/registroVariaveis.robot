@@ -26,3 +26,7 @@ ${INPUT_PASSWORD_LOGIN}    //form[@action='/login']//input[@name='password']
 ${BTN_DELETE_ACCOUNT}     //i[@class='fa fa-trash-o']
 ${BTN_LOGOUT}             //*[text()=' Logout']
 ${BTN_FECHAR_POPUP}       ismiss-button
+${nome_cadastrado}        Nome Cadastrado
+${email_cadastro}         email@teste.com
+${email_incorreto}        email-incorreto@teste.com
+${password_incorreto}     password-incorreto

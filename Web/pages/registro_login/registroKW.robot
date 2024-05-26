@@ -9,17 +9,13 @@ Resource           ../../../base.robot
 
 
 *** Keywords ***
-
-Digite o nome e endereço de e-mail
-    Input Text                  locator=${INPUT_NAME}         text=${NAMEFAKE}
-    Input Text                  locator=${INPUT_EMAIL}        text=${EMAILFAKE}
-
-    Log    Email: ${EMAILFAKE}
+Digite endereço de email e senha
+    ${email}    ${password} =    Ler Credenciais do Arquivo
+    Input Text                  locator=${INPUT_EMAIL_LOGIN}       text=${email}
+    Input Text                  locator=${INPUT_PASSWORD_LOGIN}    text=${password}
+    Log    Email: ${email}
+    Log    Password: ${password}
     
-    # Log    Password: ${PASSWORDFAKER}
-
-    # Salvar Credenciais em Arquivo    ${EMAILFAKE}    ${PASSWORDFAKER}
-
 Preencha os dados: Título, Nome, Email, Senha, Data de nascimento
     ${PASSWORDFAKER}           FakerLibrary.Password
     Click Element              locator=${RADIO_MR.}
@@ -65,20 +61,6 @@ Preencha os dados: Nome, Sobrenome, Empresa, Endereço, Endereço2, País, Estad
     Input Text    locator=${INPUT_ZIPCODE}      text=${ZIPCODEFAKER}
     Input Text    locator=${MOBILE_NUMBER}      text=${MOBILENUMBERFAKER}
      
-Digite endereço de email e senha
-    ${email}    ${password} =    Ler Credenciais do Arquivo
-    Input Text                  locator=${INPUT_EMAIL_LOGIN}       text=${email}
-    Input Text                  locator=${INPUT_PASSWORD_LOGIN}    text=${password}
-    Log    Email: ${email}
-    Log    Password: ${password}
-
-Digite endereço de email e senha incorretos
-    ${EMAILFAKE}                FakerLibrary.Email
-    ${PASSWORDFAKE}             FakerLibrary.Password        
-    
-    Input Text                  locator=${INPUT_EMAIL_LOGIN}        text=${EMAILFAKE}
-    Input Text                  locator=${INPUT_PASSWORD_LOGIN}     text=${PASSWORDFAKE}
-
 Generate Password
     [Arguments]    ${length}=10
     ${password}=    FakerLibrary.Password    ${length}    False    False    False    True
