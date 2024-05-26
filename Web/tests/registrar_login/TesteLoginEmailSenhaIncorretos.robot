@@ -12,6 +12,7 @@ Default Tags          @regressivo
 [T0005] - Usuário de login com e-mail e senha incorretos
     Clique no botão    ${MENU_INSCRICAO_LOGIN}
     Verifique se ‘Login to your account’ está visível
-    Digite endereço de email e senha incorretos
+    Inserir texto    ${INPUT_EMAIL_LOGIN}    ${email_incorreto}
+    Inserir texto    ${INPUT_PASSWORD_LOGIN}    ${password_incorreto}
     Clique no botão    ${BTN_LOGIN}
     Verifique se ‘Your email or password is incorrect!’ está visível
