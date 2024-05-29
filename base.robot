@@ -8,6 +8,8 @@ Resource           ../automationexercise/Web/pages/home/homeVariaveis.robot
 ${IMAGE_AUTOMATIONEXERCISE}                 //div[@class='logo pull-left']
 ${URL_DEV}                                  https://automationexercise.com/
 ${BROWSER}                                  chrome
+${BTN_FECHAR_AD}                            dismiss-button
+${CARD_AD}                                  card
 
 *** Keywords ***
 Inicie o navegador
@@ -46,6 +48,11 @@ Clique no botão
     [Arguments]      ${locator}
     Click Element    ${locator}
 
+Clique no link
+    [Arguments]      ${locator}    ${link}
+    Wait Until Location Contains    expected=${locator}
+    Click Link    ${link}
+    
 Verifique se ‘${FRASE}’ está visível
     Wait Until Page Contains    text=${FRASE}
 
@@ -71,3 +78,9 @@ Inserir texto
 Rolar scroll até elemento ficar visível
     [Arguments]                 ${locator}
     Scroll Element Into View    ${locator}
+
+Interagir com AD
+    [Arguments]    ${ad_selector}    ${fechar_btn}
+    ${anuncio_presente}=    Run Keyword And Return Status    Element Should Be Visible    ${ad_selector}
+    Run Keyword If    ${anuncio_presente}    Click Button    ${fechar_btn}
+
