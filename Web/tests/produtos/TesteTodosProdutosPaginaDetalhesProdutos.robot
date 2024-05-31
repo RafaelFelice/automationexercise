@@ -11,10 +11,11 @@ Default Tags          @regressivo
     Clique no botão    ${MENU_PRODUCTS}
     Verifique se ‘All Products’ está visível
     O objeto está visível    ${LISTA_MARCAS}
-    Capturar Texto    ${NOME_PRODUTO}
+    Capturar Texto    ${NOME_PRODUTO_1}
+    Set Test Variable    ${produto1}
     Clique no botão    ${BTN_VER_PRODUTOS}
     Verificar título da página "Automation Exercise - Product Details"
-    Verifique se ‘${texto}’ está visível
+    Verifique se ‘${produto1}’ está visível
     Verifique se ‘Availability:’ está visível
     Verifique se ‘Category:’ está visível
     Verifique se ‘Rs.’ está visível

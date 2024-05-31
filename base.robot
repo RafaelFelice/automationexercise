@@ -58,8 +58,7 @@ O objeto está visível
 
 Capturar Texto
     [Arguments]    ${locator}
-    ${texto}=    Get Text    ${locator}
-    Set Global Variable    ${texto}
+    Get Text    ${locator}
 
 Verificar título da página "${TÍTULO}"
     Title Should Be    title=${TÍTULO}
@@ -71,3 +70,12 @@ Inserir texto
 Rolar scroll até elemento ficar visível
     [Arguments]                 ${locator}
     Scroll Element Into View    ${locator}
+
+Movimentar mouse até elemento
+    [Arguments]                 ${locator}
+    Mouse Over                  ${locator}
+
+Operação de multiplicação
+    [Arguments]      ${locator1}    ${locator2}
+    ${resultado}=    Evaluate    ${locator1} * ${locator2}
+    Log    O resultado da multiplicação é: ${resultado}

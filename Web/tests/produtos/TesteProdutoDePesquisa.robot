@@ -10,9 +10,10 @@ Default Tags          @regressivo
 [T0011] - Produto de pesquisa
     Clique no botão    ${MENU_PRODUCTS}
     Verifique se ‘All Products’ está visível
-    Capturar Texto    ${NOME_PRODUTO}
-    Inserir texto    ${INPUT_BUSCA_PRODUTOS}   ${texto}
+    Capturar Texto    ${NOME_PRODUTO_1}
+    Set Test Variable    ${produto1}
+    Inserir texto    ${INPUT_BUSCA_PRODUTOS}   ${produto1}
     Clique no botão    ${BTN_LUPA_PESQUISAR}
     Verifique se ‘Searched Products’ está visível
-    Verifique se ‘${texto}’ está visível
+    Verifique se ‘${produto1}’ está visível
     Capture Page Screenshot
